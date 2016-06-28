@@ -1,3 +1,9 @@
+---
+layout: page
+title: Rollbar API - Items
+permalink: /api/items/
+---
+
 # Items
 
 These calls require a project-level access token, which should be provided in the query string. The prefix for all URLs is `https://api.rollbar.com`
