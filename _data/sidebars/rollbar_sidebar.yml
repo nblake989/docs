@@ -7,11 +7,11 @@ entries:
   - title: Basic Integration
     output: web
     folderitems:
-      - title: Android
-        url: /notifiers/android/
+      - title: Php
+        url: /notifiers/rollbar-php/
         output: web
-      - title: Browser JS
-        url: /notifiers/rollbar.js/
+      - title: Ruby
+        url: /notifiers/rollbar-gem/
         output: web
   - title: API
     output: web
