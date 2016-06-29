@@ -1,0 +1,6 @@
+[submodule "notifiers/rollbar-gem"]
+	path = notifiers/rollbar-gem
+	url = git@github.com:rollbar/rollbar-gem
+[submodule "notifiers/rollbar-php"]
+	path = notifiers/rollbar-php
+	url = git@github.com:rollbar/rollbar-php
