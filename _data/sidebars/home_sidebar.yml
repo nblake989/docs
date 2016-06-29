@@ -8,7 +8,7 @@ entries:
   - title: Products
     output: web
     folderitems:
-    - title: Home
+    - title: Homealksdjflsj
       url: /
       output: web
       type: homepage
@@ -24,4 +24,3 @@ entries:
     - title: Product 2
       url: /p2_landing_page/
       output: web
-

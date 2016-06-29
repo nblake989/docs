@@ -1,16 +1,17 @@
 ---
 layout: page
 title: Rollbar API - Items
+sidebar: rollbar_sidebar
 permalink: /api/items/
 ---
+
+<!-- Sub:[TOC] -->
 
 # Items
 
 These calls require a project-level access token, which should be provided in the query string. The prefix for all URLs is `https://api.rollbar.com`
 
-<!-- Sub:[TOC] -->
 
----
 
 ## Get an item by ID
 

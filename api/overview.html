@@ -1,0 +1,23 @@
+---
+layout: page
+title: Rollbar API - Items
+sidebar: rollbar_sidebar
+permalink: /api/overview/
+---
+
+<h2>Overview</h2>
+<p>The Rollbar API provides a RESTful interface to much of the data in the system. It is used by our official libraries to report exceptions, deploys, and other messages. It can be used to create notifiers for additional languages, get data out to integrate with other systems, or whatever else you can imagine. If the API is missing something you'd like to see, please <a href="mailto:team@rollbar.com">let us know</a>.</p>
+<p>At this time the best way to discover the available resources/calls is by exploring the <a href="../../../docs/test_console/">test console</a>.</p>
+<h3>Timestamps</h3>
+<p>All timestamps (inputs and outputs) are GMT unix timestamps.</p>
+<h3>Authentication</h3>
+<p>Authentication is done via access token included as a parameter. For GET requests, it should be included as a query parameter:</p>
+<pre>$ curl 'https://api.rollbar.com/api/1/item/12345?access_token=YOUR_ACCESS_TOKEN'</pre>
+<p>All access tokens are project-specific and only provide access to the project they are assocaited with. You can find and administer your access tokens in Settings&raquo;Access Tokens. Access tokens can have any or all of the following scopes:</p>
+<dl class="dl-horizontal"><dt>post_server_item</dt><dd>Can perform all POST requests</dd><dt>post_client_item</dt><dd>Can perform POST requests to /deploy/ and /item/, but only if the item has a client-side platform.</dd><dt>read</dt><dd>Can perform all GET requests</dd><dt>write</dt><dd>Can perform PATCH requests to change item statuses.</dd></dl>
+<p>New projects are created with four tokens, one with each scope. As client tokens often need to be embedded in publicly-visible code (i.e the HTML source of a page), we recommend keeping this setup with an isolated post_client_item-only token.</p>
+<h3>Error responses</h3>
+<p>The API can return the following error codes:</p>
+<dl class="dl-horizontal"><dt>400</dt><dd><strong>Bad request</strong> - the request was malformed and could not be parsed.</dd><dt>403</dt><dd><strong>Access denied</strong> - access token was missing, invalid, or does not have the necessary permissions.</dd><dt>404</dt><dd><strong>Not found</strong> - the requested resource was not found. This response will be returned if the URL is entirely invalid (i.e. <code>/asdf</code>), or if it is a URL that could be valid but is referencing something that does not exist (i.e. <code>/item/12345</code>).</dd><dt>413</dt><dd><strong>Request entity too large</strong> - the request exceeded the maximum size of 128KB.</dd><dt>422</dt><dd><strong>Unprocessable Entity</strong> - the request was parseable (i.e. valid JSON), but some parameters were missing or otherwise invalid.</dd><dt>429</dt><dd><strong>Too Many Requests</strong> - If rate limiting is enabled for your access token, this return code signifies that the rate limit has been reached and the item was not processed.</dd></dl>
+<h3>Examples</h3>
+<p><a href="https://github.com/jslate">Jonathan Slate</a> put together <a href="https://github.com/jslate/rolltools">rolltools</a>, a Ruby gem that provides a few utilities using the Rollbar API.</p>
