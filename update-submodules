@@ -1,0 +1,10 @@
+for d in notifiers/*/ ; do
+    pushd . > /dev/null
+    cd $d
+    git checkout master
+    git pull
+    popd > /dev/null
+    git add $d
+    git commit -m "updated submodules"
+    git push
+done
